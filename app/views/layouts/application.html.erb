@@ -15,7 +15,7 @@
         <% if request.fullpath.include? "/admin" %>
           <% if admin_signed_in? %>
             <li>
-              <%= link_to "ロゴ", admin_homes_top_path %>
+              <%= link_to "ロゴ", admin_root_path %>
             </li>
             <li>商品一覧</li>
             <li>会員一覧</li>
@@ -28,7 +28,7 @@
         <% else %>
           <% if customer_signed_in? %>
             <li>
-              <%= link_to "ロゴ", public_root_path %>
+              <%= link_to "ロゴ", root_path %>
             </li>
             <li>
               <%= link_to "マイページ", public_customoers_show_path %>
@@ -40,7 +40,7 @@
             </li>
           <% else %>
             <li>
-              <%= link_to "ロゴ", public_root_path %>
+              <%= link_to "ロゴ", root_path %>
             </li>
             <li>商品一覧</li>
             <li>

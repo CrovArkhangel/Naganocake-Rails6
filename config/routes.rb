@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'homes/top'
+    root to: 'homes#top'
   end
   namespace :public do
     get 'customoers/show'
@@ -9,11 +9,7 @@ Rails.application.routes.draw do
     get 'customoers/confirm_withdraw'
     get 'customoers/withdraw'
   end
-  root to: 'homes#top'
-  
-  namespace :public do
-    root to: 'homes#top'
-  end
+  root to: 'public/homes#top'
 
 # 顧客用
 # URL /customers/sign_in ...
