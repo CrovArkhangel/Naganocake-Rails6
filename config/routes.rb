@@ -3,11 +3,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
   namespace :public do
-    get 'customoers/show'
-    get 'customoers/edit'
-    get 'customoers/update'
-    get 'customoers/confirm_withdraw'
-    get 'customoers/withdraw'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+    get 'customers/confirm_withdraw'
+    get 'customers/withdraw'
   end
   root to: 'public/homes#top'
 
