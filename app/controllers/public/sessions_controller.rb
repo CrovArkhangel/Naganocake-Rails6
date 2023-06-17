@@ -26,16 +26,16 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
    def reject_invalid_customer
-   customer = Customer.find_by(email: params[:customer][:email])
-   return unless customer
-
-   return if customer.valid_password?(params[:customer][:password]) && customer.active_for_authentication?
-
-   alert_message = if customer.is_valid == false
-                     'You have already resigned'
-                   else
-                     'Your account is suspended'
-                   end
-   redirect_to request.referer, alert: alert_message
+       customer = Customer.find_by(email: params[:customer][:email])
+       return unless customer
+    
+       return if customer.valid_password?(params[:customer][:password]) && customer.active_for_authentication?
+    
+       alert_message = if customer.is_valid == false
+                         'You have already resigned'
+                       else
+                         'Your account is suspended'
+                       end
+       redirect_to request.referer, alert: alert_message
    end
 end
