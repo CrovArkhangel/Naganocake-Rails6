@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_11_042212) do
+ActiveRecord::Schema.define(version: 2023_06_16_121111) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2023_06_11_042212) do
     t.string "zip_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "telphone_number", default: "", null: false
+    t.boolean "is_valid", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

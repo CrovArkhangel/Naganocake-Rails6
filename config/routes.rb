@@ -14,14 +14,17 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     root to: 'homes#top'
   end
+  root to: 'public/homes#top'
   namespace :public do
-    resources :customers, only: [:show, :edit, :update, :confirm_withdraw, :confirm_withdraw]
+    get 'customers/confirm_withdraw'
+    patch 'customers/withdraw'
+    resources :customers, only: [:show, :edit, :update]
     # get 'customers/show'
     # get 'customers/edit'
     # get 'customers/update'
-    get 'customers/confirm_withdraw'
-    get 'customers/withdraw'
+
   end
-  root to: 'public/homes#top'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
