@@ -1,0 +1,30 @@
+<h1>商品一覧</h1>
+<%= link_to "＋", new_admin_product_path %>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+        <td><%= product.price %></td>
+        <td><%= product.genre.name %></td>
+        <td>
+          <% if product.is_selling == true then %>
+            販売中
+          <% else %>
+            販売停止中
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'products/index'
+    get 'products/show'
+  end
+  # namespace :admin do
+  #   get 'products/index'
+  #   get 'products/show'
+  #   get 'products/new'
+  #   get 'products/edit'
+  #   get 'products/create'
+  #   get 'products/update'
+  # end
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -14,12 +26,15 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     root to: 'homes#top'
     resources :customers
+    resources :products
+    resources :genres
   end
   root to: 'public/homes#top'
   namespace :public do
     get 'customers/confirm_withdraw'
     patch 'customers/withdraw'
     resources :customers, only: [:show, :edit, :update]
+    resources :products
     # get 'customers/show'
     # get 'customers/edit'
     # get 'customers/update'

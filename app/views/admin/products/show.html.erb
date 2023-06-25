@@ -1,0 +1,32 @@
+<h1>商品詳細</h1>
+<table class = "table">
+  <tbody>
+    <tr>
+      <th>商品名</th>
+      <th><%= @product.name %></th>
+    </tr>
+    <tr>
+      <th>商品説明</th>
+      <th><%= @product.explanation %></th>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <th><%= @product.genre.name %></th>
+    </tr>
+    <tr>
+      <th>税込み価格(税抜き価格)</th>
+      <th><%= ((@product.price * 1.1).round(0)).to_s(:delimited) %>(<%= @product.price.to_s(:delimited) %>)円</th>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <th>
+        <% if @product.is_selling == true then %>
+          販売中
+        <% else %>
+          販売停止中
+        <% end %>
+      </th>
+    </tr>
+  <tbody>
+</table>
+<p><%= link_to "編集する",  edit_public_product_path %></p>

@@ -1,0 +1,33 @@
+<h1>商品新規登録</h1>
+<%= form_with model: @product, url: admin_products_path, local: true do |f| %>
+  <div class="mb-6">
+    <%= f.label :商品名 %>
+    <%= f.text_field :name, include_blank: "商品名" %>
+  </div>
+  <div class="mb-6">
+    <%= f.label :商品説明 %>
+    <%= f.text_area :explanation, include_blank: "ここに説明文を記述します"  %>
+  </div>
+  <div class="mb-6">
+    <%= f.label :税抜き価格 %>
+    <%= f.number_field :price, include_blank: "1000" %>円
+  </div>
+  <div class="mb-6">
+    <%= f.label :ジャンル %>
+    <%= f.collection_select :genre_id, @genre, :id, :name, include_blank: "選択して下さい" %>
+  </div>
+  <div class="mb-6">
+    <%= f.label :商品画像 %>
+    <%= f.file_field :product_image %>
+  </div>
+  <div class="done">
+  <label for="task_done">販売ステータス</label>
+  <div>
+    <input type="radio" value="true" name="task[done]" id="task_done_true">
+    <label for="task_done_true">販売中</label>
+    <input type="radio" value="false" checked="checked" name="task[done]" id="task_done_false">
+    <label for="task_done_false">販売停止中</label>
+  </div>
+</div>
+  <%= f.submit "新規登録" %>
+<% end %>
