@@ -1,2 +1,11 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<%= image_tag @product.get_product_image(400, 400) %></br>
+<h2><%= @product.name %></h2></br>
+<%= @product.explanation %></br>
+<h2  style="display:inline">￥<%= ((@product.price * 1.1).round(0)).to_s(:delimited) %></h2>(税込み)
+
+<%= form_with model: [:public, @cart_item] do |f| %>
+    <%= f.hidden_field :product_id, :value => @product.id %>
+    <%= f.select :quantity, *[1..10] %>
+    <%= f.submit "カートに入れる" %>
+<% end %>
+

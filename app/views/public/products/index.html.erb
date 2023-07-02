@@ -2,7 +2,7 @@
 <span>
   <% @products.each do |product| %>
   <%= image_tag product.get_product_image(200, 200) %></br>
-  <%= product.name %></br>
+  <%= link_to product.name, public_product_path(product.id) %></br>
   ￥<%= product.price.to_s(:delimited) %>
   <% end %>
 </span>

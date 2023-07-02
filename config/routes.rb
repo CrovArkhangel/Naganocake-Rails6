@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'products/index'
-    get 'products/show'
-  end
   # namespace :admin do
   #   get 'products/index'
   #   get 'products/show'
@@ -33,8 +29,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :public do
     get 'customers/confirm_withdraw'
     patch 'customers/withdraw'
+    get 'cart_items/delete_all'
     resources :customers, only: [:show, :edit, :update]
-    resources :products
+    resources :products, only: [:index, :show]
+    resources :cart_items
     # get 'customers/show'
     # get 'customers/edit'
     # get 'customers/update'
