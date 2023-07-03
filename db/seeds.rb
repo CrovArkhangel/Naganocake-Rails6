@@ -12,3 +12,11 @@ Admin.create!(
 Genre.create!(
   name: "ケーキ"
 )
+
+Product.create!(
+  genre_id: 1,
+  name: "いちごのショートケーキ(ホール)",
+  explanation: "栃木県産のとちおとめを贅沢に使用しています。",
+  price: 2500,
+  is_selling: true
+)

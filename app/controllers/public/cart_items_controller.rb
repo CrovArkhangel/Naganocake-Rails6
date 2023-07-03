@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
     # @product = Product.find(params[:id])
@@ -6,10 +7,6 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    # @cart_item = CartItem.find(params[:id])
-    # @cart_item.quantity = params[:quantity].to_i
-    # @cart_item.save!
-    # redirect_to public_cart_items_path(current_customer)
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
       flash[:notice] = 'カート内のギフトが更新されました'
