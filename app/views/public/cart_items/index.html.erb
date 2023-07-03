@@ -12,7 +12,7 @@
 <tbody>
 <% @cart_items.each do |cart_item| %>
   <tr>
-    <td><%= cart_item.product.name %></td>
+    <td><%= image_tag cart_item.product.get_product_image(50, 50) %> <strong><%= cart_item.product.name %></strong></td>
     <td><%= cart_item.product.with_tax_price.to_s(:delimited) %></td>
     <td>
       <%= form_with model: [:public, cart_item], local: true, method: :patch do |f| %>
