@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  # namespace :admin do
-  #   get 'products/index'
-  #   get 'products/show'
-  #   get 'products/new'
-  #   get 'products/edit'
-  #   get 'products/create'
-  #   get 'products/update'
-  # end
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -33,6 +25,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :customers, only: [:show, :edit, :update]
     resources :products, only: [:index, :show]
     resources :cart_items
+    resources :receiver_addresses
     # get 'customers/show'
     # get 'customers/edit'
     # get 'customers/update'

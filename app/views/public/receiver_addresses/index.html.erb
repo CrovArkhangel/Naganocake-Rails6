@@ -1,0 +1,42 @@
+<h1>配送先登録/一覧</h1>
+
+<%= form_with model: [:public, @receiver_address] do |f| %>
+  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+  <div class="mb-6">
+    <%= f.label :郵便番号（ハイフンなし） %>
+    <%= f.text_field :zip_code, include_blank: "0000000" %>
+  </div>
+  <div class="mb-6">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, include_blank: "東京都渋谷区代々木神園町0-0" %>
+  </div>
+  <div class="mb-6">
+    <%= f.label :宛名 %>
+    <%= f.text_field :name, include_blank: "令和道子" %>
+  </div>
+  <%= f.submit "新規登録" %>
+<% end %>
+
+<table class = "table">
+  <thead>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+    <th></th>
+  </thead>
+
+  <tbody>
+  <% @receiver_addresses.each do |receiver_address| %>
+    <tr>
+      <td><%= receiver_address.zip_code %></td>
+      <td><%= receiver_address.address %></td>
+      <td><%= receiver_address.name %></td>
+      <td><%= link_to "編集する",  edit_public_receiver_address_path(receiver_address) %></td>
+      <td><%= link_to "削除する", public_receiver_address_path(receiver_address.id, receiver_address), method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
